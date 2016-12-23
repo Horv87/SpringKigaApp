@@ -7,12 +7,14 @@
 <body>
 <h1>Liste aller Kinder:</h1>
 
+<div th:if="${createdChild != null}">Success!</div>
+
 <table>
     <tr><td >Name</td><td>Alter</td><td>Gruppe</td></tr>
     <tr th:each="child : ${children}">
         <td><a th:text="${child.getName()}" th:href="'/kinder/'+ ${child.getId()}">Name</a></td>
         <td th:text="${child.getAge()}">Alter</td>
-        <td th:text="${child.getGroup().getName()}">Gruppenname</td>
+        <td th:text="${child.getGroup() == null ? '-' : child.getGroup().getName()}">Gruppenname</td>
     </tr>
 </table>
 

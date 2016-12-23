@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -40,9 +41,10 @@ public class ChildrenController {
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public String createChild(@RequestParam String name, @RequestParam int age){
+    public String createChild(@RequestParam String name, @RequestParam int age, RedirectAttributes redirectAttributes){
         Child child = new Child(name,age);
         childrenRepository.save(child);
+        redirectAttributes.addFlashAttribute("createdChild", child);
         return "redirect:/kinder";
     }
 
