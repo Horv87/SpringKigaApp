@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Kinder Liste</title>
+</head>
+<body>
+<h1>Liste aller Kinder:</h1>
+
+<table>
+    <tr><td >Name</td><td>Alter</td><td>Gruppe</td></tr>
+    <tr th:each="child : ${children}">
+        <td><a th:text="${child.getName()}" th:href="'/kinder/'+ ${child.getId()}">Name</a></td>
+        <td th:text="${child.getAge()}">Alter</td>
+        <td th:text="${child.getGroup().getName()}">Gruppenname</td>
+    </tr>
+</table>
+
+
+<a th:href="@{/kinder/create}">Kind erstellen</a>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Liste aller Gruppen</title>
+</head>
+<body>
+<h1>Liste aller Gruppen</h1>
+
+<table>
+    <tr><td>Gruppen Name</td></tr>
+    <tr th:each="group : ${groups}">
+        <td>
+            <a th:href="'/gruppe/'+ ${group.getId()}" th:text="${group.getName()}">Name</a>
+        </td>
+
+    </tr>
+
+</table>
+</body>
+</html>
